@@ -1,7 +1,8 @@
 <template>
   <div>
     <Header class-nav="transparent-black" />
-    <section id="berita-section" class="d-flex align-items-end py-5">
+
+    <section id="karier-section" class="d-flex align-items-end py-5 ">
       <div class="container custom">
         <div class="row">
           <div class="col">
@@ -76,13 +77,13 @@
 <script>
   import Header from "@/components/common/Header";
   import Footer from "@/components/common/Footer";
-  import carousel from "vue-owl-carousel";
+  // import carousel from "vue-owl-carousel";
   import BeritaStyle2 from "@/components/berita/BeritaStyle2";
-  import BeritaStyle1 from "@/components/berita/BeritaStyle1";
+  // import BeritaStyle1 from "@/components/berita/BeritaStyle1";
 
   export default {
     name: "Berita",
-    components: { Header, Footer, carousel, BeritaStyle2, BeritaStyle1 },
+    components: { Header, Footer, BeritaStyle2 },
     data() {
       return {
         karirBox: [
@@ -90,9 +91,9 @@
             cover: `${this.$imgKarir("karir-min.jpg")}`,
             created_at: "2024-01-15 13:13:19",
             id: 1,
-            judul: "Lowongan staff Bank UMKM Jawa Timur",
+            judul: "Lowongan Staff Bank UMKM Jawa Timur",
             tgl: "15 Jan 2024 08:52",
-            slug: "karier-bank",
+            slug: "lowongan-staff",
             konten:
               "Karier BPR Jawa Timur Lowongan staff Kualifikasi dibutuhkan - warga negara indonesia",
             updated_at: "2024-03-14 13:13:19",

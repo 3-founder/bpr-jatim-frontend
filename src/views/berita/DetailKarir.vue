@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
           <div class="col-md-8">
             <h1 class="font-weight-bold mt-5 text-left">
-              Lowongan staff Bank UMKM Jawa Timur
+              Lowongan Staff Bank UMKM Jawa Timur
             </h1>
             <!-- <div class="box-white mt-4" v-html="this.karier.konten">
                         </div> -->

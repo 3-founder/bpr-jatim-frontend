@@ -86,20 +86,6 @@
     components: { Header, Footer, BeritaStyle2 },
     data() {
       return {
-        karirBox: [
-          {
-            cover: `${this.$imgKarir("karir-min.jpg")}`,
-            created_at: "2024-01-15 13:13:19",
-            id: 1,
-            judul: "Lowongan Staff Bank UMKM Jawa Timur",
-            tgl: "15 Jan 2024 08:52",
-            slug: "lowongan-staff",
-            konten:
-              "Karier BPR Jawa Timur Lowongan staff Kualifikasi dibutuhkan - warga negara indonesia",
-            updated_at: "2024-03-14 13:13:19",
-            isNotBerita: true,
-          },
-        ],
         kategori: [],
         filter: false,
         search:
@@ -109,10 +95,51 @@
             : false,
       };
     },
+    computed: {
+      karirBox() {
+        return this.$store.state.karir;
+      },
+    },
     watch: {
       $route() {},
     },
     mounted() {
+      this.appendMetaTags([
+        // meta tags
+        this.createMetaTags("robots", "noindex"),
+        this.createMetaTags("robots", "nofollow"),
+        this.createMetaTags("tilte", "Karier - Bank UMKM Jawa Timur"),
+        this.createMetaTags(
+          "description",
+          "Karier BPR Jawa Timur Lowongan staff Kualifikasi dibutuhkan - warga negara indonesia"
+        ),
+        // property tags
+        this.createMetaProperty("og:type", "website"),
+        this.createMetaProperty("og:url", this.$url_origin),
+        this.createMetaProperty("og:title", "Karier - Bank UMKM Jawa Timur"),
+        this.createMetaProperty(
+          "og:description",
+          "Karier BPR Jawa Timur Lowongan staff Kualifikasi dibutuhkan - warga negara indonesia"
+        ),
+        this.createMetaProperty(
+          "twitter:image",
+          this.$imgKarir("karir-min.jpg")
+        ),
+        this.createMetaProperty("twitter:type", "website"),
+        this.createMetaProperty("twitter:url", this.$url_origin),
+        this.createMetaProperty(
+          "twitter:title",
+          "Karier - Bank UMKM Jawa Timur"
+        ),
+        this.createMetaProperty(
+          "twitter:description",
+          "Karier BPR Jawa Timur Lowongan staff Kualifikasi dibutuhkan - warga negara indonesia"
+        ),
+        this.createMetaProperty(
+          "twitter:image",
+          this.$imgKarir("karir-min.jpg")
+        ),
+      ]);
       const keyword =
         typeof this.$route.query.key !== "undefined"
           ? this.$route.query.key
@@ -122,6 +149,24 @@
     methods: {
       searchHandler() {
         this.$router.push("/karier?key=" + this.$refs.key.value);
+      },
+      createMetaTags(name, content) {
+        var metaTag = document.createElement("meta");
+        metaTag.setAttribute("name", name);
+        metaTag.setAttribute("content", content);
+        return metaTag;
+      },
+      createMetaProperty(property, content) {
+        var metaTag = document.createElement("meta");
+        metaTag.setAttribute("property", property);
+        metaTag.setAttribute("content", content);
+        return metaTag;
+      },
+      appendMetaTags(metaTags) {
+        var head = document.head || document.getElementsByTagName("head")[0];
+        metaTags.forEach(function(metaTag) {
+          head.appendChild(metaTag);
+        });
       },
     },
   };

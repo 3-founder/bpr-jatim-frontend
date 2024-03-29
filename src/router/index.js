@@ -128,7 +128,7 @@ const routes = [
     component: Karier,
   },
   {
-    path: "/karier/lowongan-staff",
+    path: "/karier/:slug",
     name: "Karier Detail",
     component: KarierDetail,
   },
